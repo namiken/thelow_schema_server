@@ -10,9 +10,14 @@ export class AppService {
   putSchema(schemaName: string, schema: SchemaRequest) {
     const filePath =
       this.configService.get('schemaDir') + '/' + schemaName + '.txt';
-    writeFileSync(filePath, JSON.stringify(schema), 'utf8');
+    const schemaData: SchemaData = {
+      ...schema,
+      fileName: schemaName,
+      createdAt: new Date(),
+    };
+    writeFileSync(filePath, JSON.stringify(schemaData), 'utf8');
   }
-
+  //mc.eximradar.jp
   getSchema(schemaName: string): SchemaData {
     const filePath =
       this.configService.get('schemaDir') + '/' + schemaName + '.txt';

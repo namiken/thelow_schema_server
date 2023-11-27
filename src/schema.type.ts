@@ -1,4 +1,5 @@
 export interface SchemaData {
+  fileName: string;
   schema: string;
   mcid: string;
   createdAt: Date;
